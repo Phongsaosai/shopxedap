@@ -1,6 +1,6 @@
 @extends('admin.main')
 @section('header')
-<script src="/ckeditor/ckeditor.js"></script>
+<script src="/ckeditor5-build-classic/ckeditor.js"></script>
 @endsection
 @section('content')
 <form action="" method="POST">
@@ -8,15 +8,18 @@
 
         <div class="form-group">
             <label for="menu">Tên danh mục</label>
-            <input type="text" name="menu" class="form-control" id="menu" placeholder="Enter name">
+            <input type="text" name="name" class="form-control" placeholder="Nhập tên danh mục">
         </div>
-
         <div class="form-group">
             <label >Danh mục</label>
-            <seclect class="form-control" name="parent_id">
+            <select class="form-control" name="parent_id">
                 <option value="0">Danh mục cha</option>
-            </seclect>
+                @foreach($menus as $menu)
+                    <option value="{{$menu->id}}">{{$menu->name}}</option>
+                @endforeach
+            </select>
         </div>
+
 
         <div class="form-group">
             <label >Mô tả</label>
@@ -45,10 +48,18 @@
     <div class="card-footer">
         <button type="submit" class="btn btn-primary">Tạo danh mục</button>
     </div>
+    @csrf
 </form>
 @endsection
 @section('footer')
 <script>
-    CKEDITOR.replace( 'content' );
+    ClassicEditor
+        .create( document.querySelector( '#content' ) )
+        .then( editor => {
+            console.log( editor );
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
 </script>
-@endsection
+@endsection 
