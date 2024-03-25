@@ -38,4 +38,11 @@ class MenuController extends Controller
 
         return redirect()->back();
     }
+
+    public function index(){
+        return view('admin.menu.list', [
+            'title' => 'Danh sách danh mục mới nhất',
+            'menus' => $this->menuService->getAll()
+        ]);
+    }
 }

@@ -5936,7 +5936,10 @@
                     "App\\": "app/",
                     "Database\\Seeders\\": "database/seeders/",
                     "Database\\Factories\\": "database/factories/"
-                }
+                },
+                "files": [
+                    "app/Helpers/Helper.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
