@@ -18,12 +18,13 @@ return new class extends Migration
             $table->text('description');
             $table->longText('content');
             $table->integer('menu_id');
-            $table->integer('price');
-            $table->integer('price_sale');
+            $table->integer('price')->nullable();
+            $table->integer('price_sale')->nullable();
             $table->integer('active');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

@@ -21,4 +21,10 @@
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  @yield('header')
+@yield('header')
+
+<style>
+  .hidden {
+    display: none;
+  }
+</style>

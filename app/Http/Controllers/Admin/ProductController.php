@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\Menu\MenuService;
 use App\Http\Services\Product\ProductAdminService;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Models\Product;
 use App\Http\Requests\Product\ProductRequest;
 class ProductController extends Controller
 {
@@ -20,7 +20,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.product.list', [
+            'title' => 'Danh sách sản phẩm',
+            'products' =>  $this->productService->get()
+        ]);
     }
 
     /**
@@ -40,44 +43,48 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $result = $this->productService->insert($request);
+        $this->productService->insert($request);
 
-        if ($result) {
-            return redirect()->back()->with('success', 'Thêm sản phẩm thành công');
-        } else {
-            return redirect()->back()->with('error', 'Thêm sản phẩm thất bại');
-        }
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Product $product)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        $menus = $this->productService->getMenu();
+        return view('admin.product.edit', [
+            'title' => 'Chỉnh sửa sản phẩm',
+            'product' => $product,
+            'menus' => $menus
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $result = $this->productService->update($request, $product);
+        if($result){
+            return redirect('/admin/products/list');
+        }
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request): \Illuminate\Http\JsonResponse
     {
-        //
+        $result = $this->productService->delete($request);
+        if($result){
+            return response()->json([
+                'erro' => false,
+                'message' => 'Xoá thành công sản phẩm'
+            ]);
+        }
+        return response()->json([ 'error' => true ]);
     }
 }

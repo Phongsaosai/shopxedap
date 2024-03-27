@@ -69,14 +69,38 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="/admin/products/add" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-bread-slice nav-icon"></i>
                   <p>Thêm sản phẩm</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/admin/products/list" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-bread-slice nav-icon"></i>
                   <p>Danh sách sản phẩm</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tv"></i>
+              <p>
+                Slider
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/sliders/add" class="nav-link">
+                  <i class="fas fa-gem nav-icon"></i>
+                  <p>Thêm slider</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/sliders/list" class="nav-link">
+                  <i class="fas fa-gem nav-icon"></i>
+                  <p>Danh sách slider</p>
                 </a>
               </li>
             </ul>

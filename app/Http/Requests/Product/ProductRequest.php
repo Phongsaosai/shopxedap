@@ -23,15 +23,15 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'file' => 'required' // Sử dụng tên trường 'file' nếu đúng
+            'thumb' => 'required' // Sử dụng tên trường 'file' nếu đúng
         ];
     }
 
-    public function message()
+    public function messages()
     {
         return [
             'name.required' => 'Không được để trống tên',
-            'file.required' => 'Vui lòng thêm ảnh'
+            'thumb.required' => 'Vui lòng thêm ảnh'
         ];
     }
 }

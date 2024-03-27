@@ -29,9 +29,7 @@ class ProductAdminService{
 
     public function insert($request){
         $isValidPrice = $this->isValidPrice($request);
-        if($isValidPrice === false){
-            return false;
-        
+        if($isValidPrice === false) return false;
         try{
             $request->except('_token');
             Product::create($request->all());
@@ -41,8 +39,38 @@ class ProductAdminService{
             Log::info($err->getMessage());
             return false;
         }
-    }
         return true;
+    }
+
+    public function get(){
+        return Product::with('menu')
+            ->orderByDesc('id')->paginate(15);
+    }
+
+    public function update($request, $product){
+        $isValidPrice = $this->isValidPrice($request);
+        if($isValidPrice === false) return false;
+
+        try{
+            $product->fill($request->input());
+            $product->save();
+            Session::flash('success', 'Cập nhật sản phẩm thành công');
+        }catch(\Exception $err){
+            Session::flash('error', 'Cập nhật sản phẩm lỗi');
+            Log::info($err->getMessage());
+            return false;
+        }
+        return true;
+        
+    }
+
+    public function delete($request){
+        $product = Product::where('id', $request->input('id'))->first();
+        if($product){
+            $product->delete(); 
+            return true;
+        }
+        return false;
     }
     
 }

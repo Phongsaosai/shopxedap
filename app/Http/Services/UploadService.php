@@ -11,6 +11,7 @@ class UploadService
         try {
             if ($request->hasFile('file')) {
                 $name = $request->file('file')->getClientOriginalName();
+                
                 $pathFull = 'uploads/' . date("Y/m/d");
                 $request->file('file')->storeAs('public/' . $pathFull, $name);
                 return asset('storage/' . $pathFull . '/' . $name);
