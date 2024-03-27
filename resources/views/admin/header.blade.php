@@ -10,5 +10,15 @@
   <link rel="stylesheet" href="/template/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/template/admin/dist/css/adminlte.min.css">
+  <style>
+        .edit-icon {
+          color: blue;
+          border: 2px solid blue;
+          border-radius: 20%;
+          padding: 6px;
+        }
+  </style>
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
   @yield('header')

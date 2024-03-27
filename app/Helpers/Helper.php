@@ -13,11 +13,11 @@ class Helper
                 <tr>
                 <td>'. $menu->id .'</td>
                 <td>'. $char . $menu->name .'</td>
-                <td>'. $menu->active .'</td>
+                <td>'. self::active($menu->active) .'</td>
                 <td>'. $menu->updated_at .'</td>
                 <td>
                     <a class="btn btn-primany btn-sm" href="/admin/menus/edit/'. $menu->id .'">
-                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-edit edit-icon"></i>
                     </a>
                     <a class="btn btn-danger btn-sm" href="#" onclick="removeRow('. $menu->id .', \'/admin/menus/destroy\')">
                     <i class="fas fa-trash"></i>
@@ -31,5 +31,11 @@ class Helper
             }
         }
         return $html;
+    }
+
+    public static function active($active = 0) : string
+    {
+        return $active == 0 ? '<span class="btn btn-success btn-xs">KHÔNG</span>' 
+        : '<span class="btn btn-success btn-xs">CÓ</span>';
     }
 } 

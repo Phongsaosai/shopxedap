@@ -7,7 +7,7 @@
                 <th>Name</th>
                 <th>Active</th>
                 <th>Update</th>
-                <th style="width: 100px">&nbsp;</th>
+                <th style="width: 120px">&nbsp;</th>
             </tr>
         </thead>
         <tbody>
