@@ -138,8 +138,10 @@
                     </div>
                 </div>
             </div>
+            @else
+                <div class="text-center"><h2>Giỏ hàng trống</h2></div>
+            @endif
+        <!-- Token CSRF -->
+        @csrf
     </form>
-    @else
-        <div class="text-center"><h2>Giỏ hàng trống</h2></div>
-    @endif
 @endsection

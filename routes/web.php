@@ -7,9 +7,11 @@ use \App\Http\Controllers\Admin\MenuController;
 use \App\Http\Controllers\Admin\ProductController;
 use \App\Http\Controllers\Admin\UploadController;
 use \App\Http\Controllers\Admin\SliderController;
+use \App\Http\Controllers\Admin\CartController;
 use \App\Http\Controllers\MainUserController;
 use \App\Http\Controllers\MenuUserController;
 use \App\Http\Controllers\ProductUserController;
+use \App\Http\Controllers\CartUserController;
 
 Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/users/login/store', [LoginController::class, 'store']);
@@ -51,6 +53,9 @@ Route::middleware(['auth'])->group(function(){
 
         #upload
         Route::post('upload/services', [UploadController::class, 'store']);
+
+        #customer
+        Route::get('customers', [CartController::class, 'index']);
     });
 });
 
@@ -58,5 +63,11 @@ Route::get('/', [MainUserController::class, 'index']);
 Route::post('/services/load-product', [MainUserController::class, 'loadProduct']);
 
 Route::get('/danh-muc/{id}-{slug}.html', [MenuUserController::class, 'index']);
-
 Route::get('/san-pham/{id}-{slug}.html', [ProductUserController::class, 'index']);
+
+Route::post('add-cart', [CartUserController::class, 'index']);
+Route::get('carts', [CartUserController::class, 'show']);
+Route::post('update-cart', [CartUserController::class, 'update']);
+Route::get('carts/delete/{id}', [CartUserController::class, 'remove']);
+Route::post('carts', [CartUserController::class, 'addCart']);
+
