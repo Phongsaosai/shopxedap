@@ -117,4 +117,10 @@ class CartUserService
     public function getCustomer(){
         return Customer::orderByDesc('id')->paginate(10);
     }
+
+    public function getProductForCart($customer){
+        return $customer->carts()->with(['product' => function ($query){
+            $query->select('id', 'name', 'thumb');
+        }])->get();
+    }
 }

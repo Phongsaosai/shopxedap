@@ -54,8 +54,9 @@ Route::middleware(['auth'])->group(function(){
         #upload
         Route::post('upload/services', [UploadController::class, 'store']);
 
-        #customer
+        #cart
         Route::get('customers', [CartController::class, 'index']);
+        Route::get('customers/view/{customer}', [CartController::class, 'show']);
     });
 });
 

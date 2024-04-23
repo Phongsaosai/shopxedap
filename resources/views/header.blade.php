@@ -7,8 +7,8 @@
             <nav class="limiter-menu-desktop container">
 
                 <!-- Logo desktop -->
-                <a href="#" class="logo">
-                    <img src="/template/images/icons/logo-01.png" alt="IMG-LOGO">
+                <a href="/" class="logo">
+                    <img src="/template/images/icons/ptshop_transparent.png" alt="IMG-LOGO">
                 </a>
 
                 <!-- Menu desktop -->
